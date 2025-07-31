@@ -5,6 +5,10 @@ from app.models import Base
 
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return {"message": "Basic E-commerce API is running"}
+  
 Base.metadata.create_all(bind=engine)
 
 app.include_router(products.router, prefix="/products", tags=["Products"])
